@@ -2,25 +2,24 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import Link from 'next/link';
-import { useForm } from 'react-hook-form';
+import { useRouter } from 'next/navigation';import { useForm } from 'react-hook-form';
 import axios from '@/utils/axios';
 import toast from 'react-hot-toast';
 import LoadingScreen from '@/utils/LoadingScreen';
 import { useStore } from '../../store/store';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Input, Button, Link } from '@nextui-org/react';
 
 const schema = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().required()
+    email: yup.string().email().required('Acest camp este obligatoriu'),
+    password: yup.string().required('Acest camp este obligatoriu')
 }).required();
 
 const LoginComponent = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const { register, handleSubmit, watch, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
-    const { accessToken, setAccessToken, setUserDetails } = useStore();
+    const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(schema) });
+    const { accessToken, setAccessToken } = useStore();
     const router = useRouter();
 
     useEffect(() => {
@@ -70,26 +69,29 @@ const LoginComponent = () => {
                         <span className='text-3xl'>Conectare</span>
 
                         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2 w-full lg:w-2/3 text-left self-center'>
-                            <label htmlFor="email" className='text-lg'>Email</label>
-                            <input type="text" id="email" placeholder='exemplu@gmail.com' {...register('email')}
-                                className='border border-primary rounded-md p-3 text-primary placeholder-red-300 text-sm font-light focus:outline-primary'
-                            />
-                            {errors.email && <span className="text-red-700 text-xs mt-1">Acest camp este obligatoriu</span>}
+                            <Input type="text" id="email" size="lg" label="Email" placeholder='exemplu@gmail.com' {...register('email')} />
+                            {errors.email && <span className="text-red-700 text-xs mt-1">{errors.email.message}</span>}
 
-                            <label htmlFor="password" className='text-lg'>Parola</label>
-                            <input type="password" id="password" placeholder='************' {...register('password')}
-                                className='border border-primary rounded-md p-3 text-primary placeholder-red-300 text-sm font-light focus:outline-primary'
+                            <Input type="password" size="lg" id="password" label="Password" placeholder='************' {...register('password')}
                             />
-                            {errors.password && <span className="text-red-700 text-xs mt-1">Acest camp este obligatoriu</span>}
+                            {errors.password && <span className="text-red-700 text-xs mt-1">{errors.password.message}</span>}
 
-                            <button type="submit" disabled={isLoading} className='text-lg font-bold bg-primary py-3 w-2/3 text-white self-center rounded my-2 hover:cursor-pointer hover:bg-red-800'>
+                            <Button type="submit" isLoading={isLoading} radius="full"
+                                className='text-lg font-bold bg-primary py-3 w-2/3 h-2/3 text-white self-center my-2 hover:cursor-pointer hover:bg-red-800'
+                            >
                                 Login
-                            </button>
+                            </Button>
                         </form>
 
                         <div className="flex flex-row gap-4 self-end items-center">
                             <span className='text-base text-primary font-light'>Nu ai un cont?</span>
-                            <Link href='/signup' className='bg-primary px-8 text-base py-2 text-center text-white font-bold rounded'>Inregistreaza-te</Link>
+                            <Button 
+                                as={Link}
+                                href='/signup'
+                                radius="full"
+                                className='bg-primary px-8 text-base py-2 text-center text-white font-bold'>
+                                    Inregistreaza-te
+                            </Button>
                         </div>
 
                         <div className="w-full h-[0.5px] bg-slate-600"></div>
