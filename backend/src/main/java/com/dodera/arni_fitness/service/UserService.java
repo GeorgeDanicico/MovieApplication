@@ -1,19 +1,19 @@
 package com.dodera.arni_fitness.service;
 
-import com.dodera.arni_fitness.dto.*;
-import com.dodera.arni_fitness.dto.details.ActiveReservation;
-import com.dodera.arni_fitness.dto.details.MembershipDetails;
-import com.dodera.arni_fitness.dto.details.PurchaseDetails;
-import com.dodera.arni_fitness.dto.details.SubscriptionDetails;
-import com.dodera.arni_fitness.dto.response.PurchaseResponse;
-import com.dodera.arni_fitness.dto.response.UserDetailsResponse;
+import com.dodera.arni_fitness.model.dto.AvailableSession;
+import com.dodera.arni_fitness.model.dto.details.ActiveReservation;
+import com.dodera.arni_fitness.model.dto.details.MembershipDetails;
+import com.dodera.arni_fitness.model.dto.details.PurchaseDetails;
+import com.dodera.arni_fitness.model.dto.details.SubscriptionDetails;
+import com.dodera.arni_fitness.model.dto.response.PurchaseResponse;
+import com.dodera.arni_fitness.model.dto.response.UserDetailsResponse;
 import com.dodera.arni_fitness.model.*;
 import com.dodera.arni_fitness.repository.*;
+import com.dodera.arni_fitness.stripe.StripeService;
 import com.dodera.arni_fitness.utils.ErrorType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;

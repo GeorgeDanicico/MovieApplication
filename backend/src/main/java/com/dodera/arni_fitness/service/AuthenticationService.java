@@ -1,11 +1,12 @@
 package com.dodera.arni_fitness.service;
 
-import com.dodera.arni_fitness.dto.SignUpRequest;
+import com.dodera.arni_fitness.model.dto.SignUpRequest;
 import com.dodera.arni_fitness.mail.MailService;
 import com.dodera.arni_fitness.model.Role;
 import com.dodera.arni_fitness.model.User;
 import com.dodera.arni_fitness.repository.RoleRepository;
 import com.dodera.arni_fitness.repository.UserRepository;
+import com.dodera.arni_fitness.stripe.StripeService;
 import com.dodera.arni_fitness.utils.ErrorType;
 import com.stripe.exception.StripeException;
 import lombok.RequiredArgsConstructor;

@@ -1,14 +1,11 @@
 package com.dodera.arni_fitness.controller;
 
-import com.dodera.arni_fitness.dto.AvailableSession;
-import com.dodera.arni_fitness.dto.details.ActiveReservation;
-import com.dodera.arni_fitness.dto.details.MembershipDetails;
-import com.dodera.arni_fitness.dto.response.PurchaseResponse;
-import com.dodera.arni_fitness.dto.response.UserDetailsResponse;
-import com.dodera.arni_fitness.model.Purchase;
+import com.dodera.arni_fitness.model.dto.AvailableSession;
+import com.dodera.arni_fitness.model.dto.details.ActiveReservation;
+import com.dodera.arni_fitness.model.dto.details.MembershipDetails;
+import com.dodera.arni_fitness.model.dto.response.PurchaseResponse;
+import com.dodera.arni_fitness.model.dto.response.UserDetailsResponse;
 import com.dodera.arni_fitness.service.UserService;
-import com.stripe.model.checkout.Session;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
