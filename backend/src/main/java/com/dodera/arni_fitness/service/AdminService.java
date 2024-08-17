@@ -1,13 +1,14 @@
 package com.dodera.arni_fitness.service;
 
-import com.dodera.arni_fitness.dto.details.*;
-import com.dodera.arni_fitness.dto.request.ClassRequest;
-import com.dodera.arni_fitness.dto.request.MembershipRequest;
-import com.dodera.arni_fitness.dto.request.SessionRequest;
-import com.dodera.arni_fitness.dto.response.ClassPageResponse;
+import com.dodera.arni_fitness.model.dto.details.*;
+import com.dodera.arni_fitness.model.dto.request.ClassRequest;
+import com.dodera.arni_fitness.model.dto.request.MembershipRequest;
+import com.dodera.arni_fitness.model.dto.request.SessionRequest;
+import com.dodera.arni_fitness.model.dto.response.ClassPageResponse;
 import com.dodera.arni_fitness.model.*;
 import com.dodera.arni_fitness.model.ClassEntity;
 import com.dodera.arni_fitness.repository.*;
+import com.dodera.arni_fitness.stripe.StripeService;
 import com.dodera.arni_fitness.utils.ErrorType;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Product;

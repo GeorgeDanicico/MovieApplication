@@ -11,8 +11,9 @@
 	<groupId>com.dodera</groupId>
 	<artifactId>arni-fitness</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>arni-fitness</name>
-	<description>Backend for arni-fitness</description>
+	<name>fitness-app</name>
+	<description>Backend for fitness-app</description>
+
 	<properties>
 		<java.version>21</java.version>
 	</properties>

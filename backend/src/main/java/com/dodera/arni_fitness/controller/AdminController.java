@@ -1,12 +1,12 @@
 package com.dodera.arni_fitness.controller;
 
-import com.dodera.arni_fitness.dto.details.*;
-import com.dodera.arni_fitness.dto.request.ClassRequest;
-import com.dodera.arni_fitness.dto.request.MembershipRequest;
-import com.dodera.arni_fitness.dto.request.PinRequest;
-import com.dodera.arni_fitness.dto.request.SessionRequest;
-import com.dodera.arni_fitness.dto.response.ClassPageResponse;
-import com.dodera.arni_fitness.dto.response.Response;
+import com.dodera.arni_fitness.model.dto.details.*;
+import com.dodera.arni_fitness.model.dto.request.ClassRequest;
+import com.dodera.arni_fitness.model.dto.request.MembershipRequest;
+import com.dodera.arni_fitness.model.dto.request.PinRequest;
+import com.dodera.arni_fitness.model.dto.request.SessionRequest;
+import com.dodera.arni_fitness.model.dto.response.ClassPageResponse;
+import com.dodera.arni_fitness.model.dto.response.Response;
 import com.dodera.arni_fitness.model.*;
 import com.dodera.arni_fitness.service.AdminService;
 import org.springframework.http.HttpStatus;

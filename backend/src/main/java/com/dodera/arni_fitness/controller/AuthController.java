@@ -1,8 +1,8 @@
 package com.dodera.arni_fitness.controller;
 
-import com.dodera.arni_fitness.dto.request.LoginRequest;
-import com.dodera.arni_fitness.dto.response.LoginResponse;
-import com.dodera.arni_fitness.dto.SignUpRequest;
+import com.dodera.arni_fitness.model.dto.request.LoginRequest;
+import com.dodera.arni_fitness.model.dto.response.LoginResponse;
+import com.dodera.arni_fitness.model.dto.SignUpRequest;
 import com.dodera.arni_fitness.model.User;
 import com.dodera.arni_fitness.security.TokenService;
 import com.dodera.arni_fitness.service.AuthenticationService;

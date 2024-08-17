@@ -1,0 +1,37 @@
+server:
+  servlet:
+    context-path: /api
+
+spring:
+  application:
+    name: fitness-application
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:mysql://localhost:3306/dodera
+    username: george
+    password: george
+    driver-class-name: com.mysql.cj.jdbc.Driver
+      #spring.jpa.show-sql: true
+  mail:
+    host: smtp.hostinger.com
+    port: 465
+    username: test@doderasoft.com
+    password: DoderaTest123*
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl: true
+          starttls: true
+
+security:
+  ignored=/**:
+
+#stripe.api.token=sk_test_51PYYqtRoyfxq4ZhIzdbgKVjzRR4kurLUJryrHV5CCOfkUwQbrJvpGW5BTrQJTBMkqMUo3GS8DXFpZD8Nh3cOPDag00OpYD9wUm
+#stripe.webhook.token=whsec_775ab7553db7e94ec91cfd87ad1713058aabf1423732e4dc049cfe708dff12d4
+#
+
+dodera.token.jwt-signing-key=9a4f2c8d3b7a1e6f45c8a0b3f267d8b1d4e6f3c8a9d2b5f8e3a9c8b5f6v8a3d9
+dodera.token.expiration-time=86400000000
