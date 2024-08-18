@@ -1,6 +1,9 @@
 package com.dodera.arni_fitness.security;
 
 import com.dodera.arni_fitness.repository.UserRepository;
+import com.dodera.arni_fitness.security.jwt.JwtAuthEntryPoint;
+import com.dodera.arni_fitness.security.jwt.JwtAuthorizationFilter;
+import com.dodera.arni_fitness.security.jwt.TokenService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;

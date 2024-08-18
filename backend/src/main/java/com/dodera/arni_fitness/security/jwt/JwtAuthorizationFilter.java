@@ -1,4 +1,4 @@
-package com.dodera.arni_fitness.security;
+package com.dodera.arni_fitness.security.jwt;
 
 import com.dodera.arni_fitness.model.User;
 import com.dodera.arni_fitness.repository.UserRepository;

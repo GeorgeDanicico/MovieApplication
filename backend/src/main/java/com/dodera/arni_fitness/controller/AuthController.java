@@ -4,7 +4,7 @@ import com.dodera.arni_fitness.model.dto.request.LoginRequest;
 import com.dodera.arni_fitness.model.dto.response.LoginResponse;
 import com.dodera.arni_fitness.model.dto.SignUpRequest;
 import com.dodera.arni_fitness.model.User;
-import com.dodera.arni_fitness.security.TokenService;
+import com.dodera.arni_fitness.security.jwt.TokenService;
 import com.dodera.arni_fitness.service.AuthenticationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

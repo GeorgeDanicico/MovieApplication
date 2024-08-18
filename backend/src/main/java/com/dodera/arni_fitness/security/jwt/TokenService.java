@@ -1,4 +1,4 @@
-package com.dodera.arni_fitness.security;
+package com.dodera.arni_fitness.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -8,15 +8,14 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -76,28 +75,12 @@ public class TokenService {
         return extractAllClaims(token);
     }
 
-    @ConfigurationProperties(prefix = "dodera.token")
+    @ConfigurationProperties(prefix = "fitness.token")
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
     public static final class Properties {
         private String jwtSigningKey;
         private Long expirationTime;
-
-        public String getJwtSigningKey() {
-            return jwtSigningKey;
-        }
-
-        public void setJwtSigningKey(String jwtSigningKey) {
-            this.jwtSigningKey = jwtSigningKey;
-        }
-
-        public Long getExpirationTime() {
-            return expirationTime;
-        }
-
-        public void setExpirationTime(Long sessionTtl) {
-            this.expirationTime = sessionTtl;
-        }
     }
 }
