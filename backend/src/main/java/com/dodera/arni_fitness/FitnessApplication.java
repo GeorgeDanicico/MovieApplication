@@ -10,9 +10,9 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication(exclude = {SecurityAutoConfiguration.class})
 @EnableConfigurationProperties(TokenService.Properties.class)
 @EnableScheduling
-public class ArniFitnessApplication {
+public class FitnessApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ArniFitnessApplication.class, args);
+		SpringApplication.run(FitnessApplication.class, args);
 	}
 }
