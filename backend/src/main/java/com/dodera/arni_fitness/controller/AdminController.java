@@ -61,11 +61,6 @@ public class AdminController {
         return adminService.getClientsDetails();
     }
 
-    @GetMapping("/inventory")
-    public List<Item> getInventory() {
-        return adminService.getItems();
-    }
-
     @PostMapping("/checkin")
     public List<ClientDetails> checkinUser(@RequestBody PinRequest pinRequest) {
         adminService.checkinUser(pinRequest.pin());
@@ -97,40 +92,6 @@ public class AdminController {
     @DeleteMapping("/classes/{id}")
     public String deleteClass(@PathVariable Long id) {
         return adminService.deleteClass(id);
-    }
-
-    // Endpoint-uri pentru inventar
-    @GetMapping("/items")
-    public List<Item> getItems() {
-        return adminService.getItems();
-    }
-
-    @PostMapping("/items")
-    public Item addItem(@RequestBody Item item) {
-        return adminService.addItem(item.getTitle(), item.getQuantity());
-    }
-
-    @PostMapping("/items/{id}")
-    public ResponseEntity<?> updateItem(@PathVariable Long id, @RequestBody Item item) {
-        adminService.updateItem(id, item.getTitle(), item.getQuantity());
-        return new ResponseEntity<>(new Response("Item updated successfully"), HttpStatus.OK);
-    }
-
-    @DeleteMapping("/items/{id}")
-    public ResponseEntity<?> deleteItem(@PathVariable Long id) {
-        adminService.deleteItem(id);
-        return new ResponseEntity<>(new Response("Item deleted successfully"), HttpStatus.OK);
-    }
-
-    @PostMapping("/items/{id}/increase")
-    public Item increaseQuantity(@PathVariable Long id) {
-        return adminService.increaseQuantity(id);
-    }
-
-    @PostMapping("/items/{id}/decrease")
-    public List<Item> decreaseQuantity(@PathVariable Long id) {
-        adminService.decreaseQuantity(id);
-        return adminService.getItems();
     }
 
     // Endpoint-uri pentru antrenori
