@@ -30,7 +30,6 @@ public class AdminService {
     private final ClassRepository classRepository;
     private final StripeService stripeService;
     private final CoachRepository coachRepository;
-    private final ItemRepository itemRepository;
     private final SessionRepository sessionRepository;
     private final SubscriptionRepository subscriptionRepository;
     private final EntryRepository entryRepository;
@@ -177,34 +176,6 @@ public class AdminService {
 
     public List<Coach> getCoaches() {
         return coachRepository.findAll();
-    }
-
-    // METODE PENTRU INVENTAR
-
-    public void deleteItem(Long id) {
-        var item = this.itemRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid item id"));
-
-        itemRepository.deleteById(id);
-    }
-
-    public void updateItem(Long id, String title, Integer quantity) {
-        var item = this.itemRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid item id"));
-        item.setTitle(title);
-        item.setQuantity(quantity);
-        itemRepository.save(item);
-    }
-
-    public Item addItem(String title, Integer quantity) {
-        var item = new Item();
-        item.setTitle(title);
-        item.setQuantity(quantity);
-        return itemRepository.save(item);
-    }
-
-    public List<Item> getItems() {
-        return itemRepository.findAll();
     }
 
     // METODE PENTRU STATISTICI
@@ -540,21 +511,5 @@ public class AdminService {
             return 0;
         }
         return coachSessions.stream().mapToInt(session -> session.getSessionClassEntity().getAvailableSpots() - session.getAvailableSpots()).sum();
-    }
-
-    public Item increaseQuantity(Long id) {
-        Item item = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("A aparut o eroare la modificarea produsului."));
-        item.setQuantity(item.getQuantity() + 1);
-        return itemRepository.save(item);
-    }
-
-    public void decreaseQuantity(Long id) {
-        Item item = itemRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("A aparut o eroare la modificarea produsului."));
-        if (item.getQuantity() == 1) {
-            itemRepository.deleteById(id);
-            return;
-        }
-        item.setQuantity(item.getQuantity() - 1);
-        itemRepository.save(item);
     }
 }
