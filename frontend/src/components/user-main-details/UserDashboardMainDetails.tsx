@@ -3,8 +3,9 @@
 import React from 'react'
 import { useRouter } from 'next/navigation';
 import { useStore } from '@/store/store';
+import { Card, CardHeader } from '@nextui-org/react';
 
-const UserDashboardMainDetails = () => {
+const UserMainDetailsCard = () => {
     const { userDetails } = useStore();
     const router = useRouter();
     const hasSubscription = userDetails?.subscriptionDetails !== null;
@@ -15,17 +16,15 @@ const UserDashboardMainDetails = () => {
 
     return (
         hasSubscription ? (
-        <div className="flex flex-col py-8 px-4 gap-4 lg:gap-16 w-full rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
-            <span className='text-3xl font-bold uppercase'>Detalii <span className='text-slate-500'>Abonament</span></span>
+        <Card className="flex max-w-[400px] flex-col py-8 px-4 lg:gap-16 w-full rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
+            <CardHeader>
+                <span className='text-3xl font-bold uppercase'>Detalii <span className='text-slate-500'>Abonament</span></span>
+            </CardHeader>
 
             <div className="flex flex-col gap-4 lg:gap-0 lg:flex-row justify-center items-center w-full">
                 <div className="flex flex-col gap-2 text-center w-full">
                     <span className='text-6xl font-bold'>{userDetails?.subscriptionDetails?.reservationsTomorrow}</span>
                     <span className='text-2xl'>Rezervari Maine</span>
-                </div>
-                <div className="flex flex-col  gap-2 text-center w-full">
-                    <span className='text-6xl font-bold'>{userDetails?.subscriptionDetails?.reservationsTotal}</span>
-                    <span className='text-2xl'>Clase Rezervate</span>
                 </div>
                 <div className="flex flex-col gap-2 text-center w-full">
                     <span className='text-6xl font-bold'>{userDetails?.subscriptionDetails?.weekReservations}</span>
@@ -43,14 +42,14 @@ const UserDashboardMainDetails = () => {
                     <span className='text-2xl'>Zile Ramase Din Abonament</span>
                 </div>
             </div>
-        </div>
+        </Card>
         ) : (
-            <div className="flex flex-col py-8 px-4 gap-4 lg:gap-16 w-full rounded-lg bg-white items-center text-center text-primary shadow-spreaded shadow-primary">
+            <Card className="flex flex-col py-8 px-4 gap-4 lg:gap-16 w-full rounded-lg bg-white items-center text-center text-primary shadow-spreaded shadow-primary">
                 <span className='text-3xl font-bold uppercase'>Nu ai nici un abonament activ. <span className='text-slate-500'></span></span>
                 <button className='px-4 py-2 w-fit bg-primary text-white font-bold text-xl' onClick={() => handleBuySubscription()}>Cumpara unul</button>
-            </div>
+            </Card>
         )
     )
 }
 
-export default UserDashboardMainDetails
+export default UserMainDetailsCard

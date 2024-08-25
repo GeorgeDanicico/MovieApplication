@@ -34,7 +34,7 @@ instance.interceptors.response.use(
             localStorage.removeItem('accessToken')
             // logout
             // redirectionez pe login
-            document.location.href = '/login'
+            document.location.href = '/'
             // sters din local storage
     }
         return Promise.reject(error)
