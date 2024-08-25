@@ -38,4 +38,4 @@ stripe:
 fitness:
   token:
     jwt-signing-key: "${JWT_SIGNING_KEY}"
-    expiration-time: 86400
+    expiration-time: 8640000000

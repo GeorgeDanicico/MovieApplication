@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import UserDashboardHeader from '@/components/user-dashboard/UserDashboardHeader';
 import UserDashboardBody from '@/components/user-dashboard/UserDashboardBody';
 import { useStore } from '@/store/store';
 import axios from '@/utils/axios';
+import CustomNavbar from '@/components/navbar/CustomNavbar';
 
 const UserDashboardPage = () => {
     const { accessToken, setUserDetails } = useStore();
@@ -26,8 +26,8 @@ const UserDashboardPage = () => {
     }, [accessToken, setUserDetails])
 
     return (
-        <div className="flex flex-col">
-            <UserDashboardHeader name='test' subscriptionType={'Gold'} />
+        <div className="h-screen">
+            <CustomNavbar />
             <UserDashboardBody />
         </div>
     )
