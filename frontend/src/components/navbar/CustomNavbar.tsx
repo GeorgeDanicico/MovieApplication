@@ -27,17 +27,17 @@ const CustomNavbar = () => {
                 <Avatar name="GD" size="md"/>
             </NavbarItem>
             <NavbarItem>
-                <Button isIconOnly className="bg-primary text-white py-2 rounded-md hover:bg-white transition-all duration-300">
-                    <SettingsIcon />
+                <Button isIconOnly className="bg-primary  py-2 rounded-md transition-all duration-300">
+                    <SettingsIcon stroke="#FFFFFF" />
                 </Button>
             </NavbarItem>
             <NavbarItem>
                 <Button 
-                    isIconOnly 
-                    className="bg-primary text-white py-2 rounded-md hover:bg-white transition-all duration-300"
+                    isIconOnly
+                    className="bg-primary hover py-2 rounded-md transition-all duration-300 "
                     onClick={handleLogout}
                 >
-                    <LogoutIcon />
+                    <LogoutIcon stroke="#FFFFFF" />
                 </Button>
             </NavbarItem>
         </NavbarContent>

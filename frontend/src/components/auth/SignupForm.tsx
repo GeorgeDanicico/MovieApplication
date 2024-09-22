@@ -48,7 +48,7 @@ const SignupForm = () => {
                 {errors.confirmPassword && <span className="text-red-500 font-bold text-sm mt-0.5 pl-2">{errors.confirmPassword.message}</span>}
 
                 <Button type="submit" isLoading={false} radius="full"
-                    className='text-lg font-medium bg-primary py-3 w-2/3 h-2/3 text-white self-center my-2 hover:cursor-pointer hover:bg-red-800 disabled:bg-gray-500'>
+                    className='text-lg font-medium bg-linear-gradient py-3 w-2/3 h-2/3 text-white self-center my-2 hover:cursor-pointer hover:bg-red-800 disabled:bg-gray-500'>
                     Creare cont
                 </Button>
 
