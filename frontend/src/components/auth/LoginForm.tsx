@@ -53,32 +53,39 @@ const LoginForm = () => {
 
 
     return (
-        <div className="flex flex-col justify-center items-center px-8 lg:px-16 text-center w-[90%] h-2/3 rounded lg:rounded-none lg:rounded-r-lg gap-4 text-2xl font-bold shadow-spreaded shadow-black">
+        <div className="justify-center items-center py-8 lg:px-16 text-center bg-white w-[500px] h-2/3 rounded mx-auto lg:rounded-none lg:rounded-r-lg gap-4 text-2xl font-bold shadow-spreaded shadow-black">
             <div className="flex flex-col gap-4 w-full text-black">
                 <span className='text-3xl'>Conectare</span>
 
-                <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2 w-full lg:w-2/3 text-left self-center'>
+                <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2 w-full text-left self-center'>
                     <Input type="text" id="email" size="lg" label="Email" placeholder='exemplu@gmail.com' {...register('email')} />
                     {errors.email && <span className="text-red-700 text-xs mt-1">{errors.email.message}</span>}
 
-                    <Input type="password" size="lg" id="password" label="Password" placeholder='************' {...register('password')}
+                    <Input className="mt-2" type="password" size="lg" id="password" label="Password" placeholder='************' {...register('password')}
                     />
                     {errors.password && <span className="text-red-700 text-xs mt-1">{errors.password.message}</span>}
 
                     <Button type="submit" isLoading={isLoading} radius="full"
-                        className='text-lg font-bold bg-primary py-3 w-2/3 h-2/3 text-white self-center my-2 hover:cursor-pointer hover:bg-red-800'
+                        className='text-lg bg-linear-gradient py-3 w-full h-2/3 text-white self-center mt-5 hover:cursor-pointer hover:bg-light'
                     >
                         Login
                     </Button>
+
+                    <Button type="submit" isLoading={isLoading} radius="full"
+                        className='text-lg bg-gray-400 py-3 w-full h-2/3 text-white self-center mt-2 hover:cursor-pointer hover:bg-light'
+                    >
+                        <Image src='/google-icon.svg' width={20} height={20} alt='google-icon' />
+                        Login with Google
+                    </Button>
                 </form>
 
-                <div className="flex flex-row gap-4 self-end items-center">
+                <div className="flex flex-row gap-4 w-full self-end items-center">
                     <span className='text-base text-primary font-light'>Nu ai un cont?</span>
                     <Button 
                         as={Link}
                         href='/signup'
                         radius="full"
-                        className='bg-primary px-8 text-base py-2 text-center text-white font-bold'>
+                        className='bg-linear-gradient px-8 text-base py-2 text-center text-white font-bold hover:bg-light'>
                             Inregistreaza-te
                     </Button>
                 </div>

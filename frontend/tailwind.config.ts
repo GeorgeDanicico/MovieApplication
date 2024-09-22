@@ -12,13 +12,15 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
+        'linear-gradient': 'linear-gradient(120deg, #3498DB, #8E44AD)',
         signup: "url(/arni-signup-page-bg.png)",
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        primary: '#AC0D0C',
+        primary: '#4A154B',
+        light: '#894485',
         textcolor: '#ffffff',
         crimsonred: '#CD3D64'
       },

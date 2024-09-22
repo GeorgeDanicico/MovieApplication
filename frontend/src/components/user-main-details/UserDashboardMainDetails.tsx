@@ -16,7 +16,7 @@ const UserMainDetailsCard = () => {
 
     return (
         hasSubscription ? (
-        <Card className="flex max-w-[400px] flex-col py-8 px-4 lg:gap-16 w-full rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
+        <Card className="flex max-w-[700px] flex-col py-8 px-4 lg:gap-16 rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
             <CardHeader>
                 <span className='text-3xl font-bold uppercase'>Detalii <span className='text-slate-500'>Abonament</span></span>
             </CardHeader>
@@ -44,7 +44,7 @@ const UserMainDetailsCard = () => {
             </div>
         </Card>
         ) : (
-            <Card className="flex flex-col py-8 px-4 gap-4 lg:gap-16 w-full rounded-lg bg-white items-center text-center text-primary shadow-spreaded shadow-primary">
+            <Card className="flex flex-col py-8 px-4 gap-4 lg:gap-16 w-full h-[250px] rounded-lg bg-white items-center text-center text-primary shadow-spreaded shadow-primary">
                 <span className='text-3xl font-bold uppercase'>Nu ai nici un abonament activ. <span className='text-slate-500'></span></span>
                 <button className='px-4 py-2 w-fit bg-primary text-white font-bold text-xl' onClick={() => handleBuySubscription()}>Cumpara unul</button>
             </Card>
