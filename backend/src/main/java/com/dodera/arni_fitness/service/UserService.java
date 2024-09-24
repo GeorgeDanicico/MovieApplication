@@ -5,6 +5,7 @@ import com.dodera.arni_fitness.model.dto.details.ActiveReservation;
 import com.dodera.arni_fitness.model.dto.details.MembershipDetails;
 import com.dodera.arni_fitness.model.dto.details.PurchaseDetails;
 import com.dodera.arni_fitness.model.dto.details.SubscriptionDetails;
+import com.dodera.arni_fitness.model.dto.response.PaymentsPageResponse;
 import com.dodera.arni_fitness.model.dto.response.PurchaseResponse;
 import com.dodera.arni_fitness.model.dto.response.UserDetailsResponse;
 import com.dodera.arni_fitness.model.*;
@@ -12,6 +13,8 @@ import com.dodera.arni_fitness.repository.*;
 import com.dodera.arni_fitness.stripe.StripeService;
 import com.dodera.arni_fitness.utils.ErrorType;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -95,6 +98,30 @@ public class UserService {
                         session.getAvailableSpots())
                         )
                 .toList();
+    }
+
+    public PaymentsPageResponse getPageOfPayments(String email, int page, int size) {
+        User user = userRepository.findByEmail(email).orElseThrow(()
+                -> new IllegalArgumentException(ErrorType.UNEXPECTED_ERROR));
+
+        Pageable pageable = PageRequest.of(page, size);
+
+        var purchasesPage = purchaseRepository.findAllByUserId(user.getId(), pageable);
+
+        var purchasesDetails = purchasesPage.getContent().stream()
+                .map(purchase -> new PurchaseDetails(
+                        purchase.getDatetime(),
+                        purchase.getMembership().getTitle(),
+                        purchase.getMembership().getPrice(),
+                        purchase.getPaymentLink()
+                )).toList();
+
+        return new PaymentsPageResponse(
+                purchasesDetails,
+                purchasesPage.getTotalPages(),
+                purchasesPage.getNumber(),
+                purchasesPage.getTotalElements()
+        );
     }
 
     public List<ActiveReservation> getActiveReservations(List<Reservation> reservations) {

@@ -1,18 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useStore } from '@/store/store'; 
 import { convertDate } from '@/utils/utils';
+import { Pagination } from '@nextui-org/react';
+import axios from '@/utils/axios';
 
 const UserActivePayments = () => {
-    const { userDetails } = useStore();
+    const [payments, setPayments] = useState<PurchaseDetails[]>([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+    const itemsPerPage = 4;
+
+    useEffect(() => {
+        const fetchPayments = async () => {
+            const response = await axios.get('/user/payments?page=' + (currentPage - 1) + '&size=' + itemsPerPage);
+            setTotalPages(response.data.totalPages);
+            setPayments(response.data.purchases);
+        }
+
+        fetchPayments();
+
+    }, [currentPage]);
+
+    const handleChangePage = (page: number) => {
+        console.log(page);
+        setCurrentPage(page);
+    }
 
     return (
-        <div className="flex flex-col py-8 px-4 gap-4 h-[600px] overflow-scroll mb-10 lg:gap-16 rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
+        <div className="flex flex-col py-8 px-4 mb-10 gap-4 h-[600px] w-[500px] lg:gap-5 rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
             <span className='text-3xl font-bold uppercase'>Plati si facturare</span>
 
-            <div className="flex flex-col w-full">
-                {userDetails?.purchasesDetails?.length === 0 && <span className='text-2xl'>Nu ai nicio plata activa</span>}
-                {userDetails?.purchasesDetails?.map(payment => (
-                        <div key={payment.date} className='grid grid-cols-2 gap-2 border-2 p-2 border-primary'>
+            <div className="flex flex-col w-full h-[400px] overflow-scroll">
+                {payments?.length === 0 && <span className='text-2xl'>Nu ai nicio plata activa</span>}
+                {payments?.map(payment => (
+                        <div key={payment.date} className='grid grid-cols-2 gap-2 bg-lightGray mt-5 p-2 rounded'>
                         <a href={payment.paymentLink} target='_blank' className="flex flex-row gap-2 justify-center underline font-semibold">
                             <span>{convertDate(payment.date)}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
@@ -26,6 +47,16 @@ const UserActivePayments = () => {
                     </div>
                 ))}
             </div>
+
+                <Pagination
+                className="flex items-center justify-center"
+                    isCompact
+                    showControls 
+                    total={totalPages} 
+                    page={currentPage}
+                    onChange={handleChangePage}
+                />
+
         </div>
     )
 }

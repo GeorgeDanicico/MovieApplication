@@ -21,6 +21,7 @@ const config: Config = {
       colors: {
         primary: '#4A154B',
         light: '#894485',
+        lightGray: '#eeeeee',
         textcolor: '#ffffff',
         crimsonred: '#CD3D64'
       },
