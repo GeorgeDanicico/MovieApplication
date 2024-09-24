@@ -14,8 +14,8 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: "Arni Fitness",
-  description: "Arni Fitness App",
+  title: "Fitty",
+  description: "Fitty App",
 };
 
 export default function RootLayout({

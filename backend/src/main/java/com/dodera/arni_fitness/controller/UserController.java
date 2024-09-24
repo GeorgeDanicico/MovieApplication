@@ -55,4 +55,11 @@ public class UserController {
     public List<AvailableSession> getAvailableSessions() {
         return userService.getAvailableSessions();
     }
+
+    @GetMapping("/payments")
+    public Object getPageOfPayments(@RequestParam(defaultValue = "0") int page,
+                                    @RequestParam(defaultValue = "5") int size) {
+        String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userService.getPageOfPayments(email, page, size);
+    }
 }
