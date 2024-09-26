@@ -62,4 +62,9 @@ public class UserController {
         String email = (String) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         return userService.getPageOfPayments(email, page, size);
     }
+
+    @GetMapping("/sessions/{date}")
+    public Object getDailySessions(@PathVariable String date) {
+        return userService.getDailySessions(date);
+    }
 }
