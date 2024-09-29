@@ -3,6 +3,8 @@ server:
     context-path: /api
 
 spring:
+  config:
+    import: optional:file:.env[properties]
   application:
     name: fitness-application
   jpa:
