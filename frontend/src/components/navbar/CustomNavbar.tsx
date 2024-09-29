@@ -17,9 +17,9 @@ const CustomNavbar = () => {
     }
 
   return (
-    <Navbar className="bg-primary">
+    <Navbar className="bg-linear-gradient">
         <NavbarBrand>
-            <p className="font-bold text-inherit">Sharkness</p>
+            <p className="font-bold text-inherit">Fitty</p>
         </NavbarBrand>
 
         <NavbarContent justify="end">
@@ -27,14 +27,14 @@ const CustomNavbar = () => {
                 <Avatar name="GD" size="md"/>
             </NavbarItem>
             <NavbarItem>
-                <Button isIconOnly className="bg-primary  py-2 rounded-md transition-all duration-300">
+                <Button isIconOnly className="bg-opacity-0  py-2 rounded-md transition-all duration-300">
                     <SettingsIcon stroke="#FFFFFF" />
                 </Button>
             </NavbarItem>
             <NavbarItem>
                 <Button 
                     isIconOnly
-                    className="bg-primary hover py-2 rounded-md transition-all duration-300 "
+                    className="bg-opacity-0 hover py-2 rounded-md transition-all duration-300 "
                     onClick={handleLogout}
                 >
                     <LogoutIcon stroke="#FFFFFF" />

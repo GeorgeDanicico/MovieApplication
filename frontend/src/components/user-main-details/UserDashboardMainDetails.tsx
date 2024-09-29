@@ -11,7 +11,7 @@ const UserMainDetailsCard = () => {
     const hasSubscription = userDetails?.subscriptionDetails !== null;
 
     const handleBuySubscription = () => {
-        router.push('/membership');
+        router.push('/memberships');
     }
 
     return (

@@ -35,10 +35,7 @@ public class StripeService {
     private final SubscriptionRepository subscriptionRepository;
     private final MailService mailService;
 
-    @Value("${stripe.api.token}")
-    private String stripeApiKey;
-
-    public StripeService(UserRepository userRepository, MembershipRepository membershipRepository, PurchaseRepository purchaseRepository, SubscriptionRepository subscriptionRepository, MailService mailService) {
+    public StripeService(UserRepository userRepository, MembershipRepository membershipRepository, PurchaseRepository purchaseRepository, SubscriptionRepository subscriptionRepository, MailService mailService, @Value("${stripe.api.token}") String stripeApiKey) {
         this.userRepository = userRepository;
         this.membershipRepository = membershipRepository;
         this.purchaseRepository = purchaseRepository;

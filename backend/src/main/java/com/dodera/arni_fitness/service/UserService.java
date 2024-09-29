@@ -270,4 +270,8 @@ public class UserService {
                         membership.getAvailability()
                 )).toList();
     }
+
+    public Object getDailySessions(String date) {
+        return sessionRepository.findAll();
+    }
 }

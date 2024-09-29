@@ -6,6 +6,16 @@ interface UserInfo {
     lastSubscription: any
 }
 
+interface MembershipDetails {
+    id: number,
+    name: string,
+    description: string,
+    sold: boolean,
+    price: number,
+    entries: number,
+    duration: number
+}
+
 interface PurchaseDetails {
     date: string,
     membershipName: string,
