@@ -16,6 +16,14 @@ interface MembershipDetails {
     duration: number
 }
 
+interface SessionDetails {
+    availableSpots: number,
+    coachName: string,
+    date: string,
+    sessionId: number,
+    sessionName: string
+}
+
 interface PurchaseDetails {
     date: string,
     membershipName: string,

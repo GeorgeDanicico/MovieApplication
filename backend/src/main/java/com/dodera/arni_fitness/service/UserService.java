@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -81,15 +82,15 @@ public class UserService {
         return subscriptionDetails;
     }
 
-    public List<AvailableSession> getAvailableSessions() {
-//        LocalDate localDate = LocalDate.parse(date);
-//        LocalDateTime startDate = localDate.atStartOfDay();
-//        LocalDateTime endDate = localDate.atTime(LocalTime.MAX);
+    public List<AvailableSession> getAvailableSessions(String date) {
+        LocalDate localDate = LocalDate.parse(date);
+        LocalDateTime startDate = localDate.atStartOfDay();
+        LocalDateTime endDate = localDate.atTime(LocalTime.MAX);
 
         return sessionRepository.findAll()
                 .stream()
-//                .filter(session -> session.getDatetime().isAfter(startDate)
-//                        && session.getDatetime().isBefore(endDate))
+                .filter(session -> session.getDatetime().isAfter(startDate)
+                        && session.getDatetime().isBefore(endDate))
                 .map(session -> new AvailableSession(
                         session.getId(),
                         session.getName(),

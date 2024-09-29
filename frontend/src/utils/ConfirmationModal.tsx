@@ -1,5 +1,6 @@
 
 
+import { Button } from '@nextui-org/react';
 import React, { useState } from 'react';
 
 interface ConfirmationModalProps {
@@ -25,7 +26,7 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 
     return (
         <div
-            className={`fixed inset-0 flex items-center justify-center z-50 ${
+            className={`fixed inset-0 flex items-center justify-center h-[200px] z-50 ${
                 isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
             } transition-opacity duration-300 h-screen w-screen`}
             style={{ backgroundColor: 'rgba(0, 0, 0, 0.6)' }}
@@ -34,20 +35,20 @@ const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
                 <h2 className="text-xl font-bold mb-4">Confirmare</h2>
                 <p className="mb-4">Esti sigur ca vrei sa continui??</p>
                 <div className="flex justify-end">
-                    <button
-                        className="px-4 py-2 mr-2 bg-gray-300 hover:bg-gray-400 text-white rounded"
+                    <Button
+                        className="mr-2 bg-gray-500 rounded"
                         onClick={onClose}
                     >
                         Anuleaza
-                    </button>
-                    <button
-                        className={`px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded ${
+                    </Button>
+                    <Button
+                        className={`px-4 py-2 bg-linear-gradient text-white rounded ${
                             isAnimating ? 'opacity-0 pointer-events-none' : ''
                         }`}
                         onClick={handleConfirm}
                     >
                         Confirma
-                    </button>
+                    </Button>
                 </div>
             </div>
         </div>
