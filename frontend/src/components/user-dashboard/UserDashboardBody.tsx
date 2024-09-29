@@ -5,7 +5,7 @@ import { useStore } from '@/store/store';
 import UserMainDetailsCard from '@/components/user-main-details/UserDashboardMainDetails';
 import UserPinCard from '../user-pin-card/UserPinCard';
 import UserCalendarCard from '../user-calendar/UserCalendarCard';
-import UserActiveReservations from '../user-active-reservations/UserActiveReservation';
+import UserActiveReservations from '../user-reservations/UserActiveReservation';
 import UserActivePayments from '../user-payments/UserActivePayments';
 
 const UserDashboardBody = () => {
