@@ -9,11 +9,11 @@ import { DateValue, getLocalTimeZone, today } from '@internationalized/date';
 const UserCalendarCard = () => {
   let defaultDate = today(getLocalTimeZone());
   let [focusedDate, setFocusedDate] = useState<DateValue>(defaultDate);
-  const [sessions, setSessions] = useState<any[]>([]);
+  const [sessions, setSessions] = useState<SessionDetails[]>([]);
 
   const fetchSessions = async (date: DateValue) => {
     try {
-        const response = await axios.get(`/user/sessions/${date.toString()}`);
+        const response = await axios.get<SessionDetails[]>(`/user/sessions/${date.toString()}`);
 
         setSessions(response.data);
     } catch (err) {
@@ -37,7 +37,7 @@ const UserCalendarCard = () => {
         />
         <UserReservationsWidget
             selectedDate={focusedDate.toString()}
-            sessions={sessions.filter(session => compareDates(session.date, "12-01-2024"))}
+            sessions={sessions}
         />
       </div>
 

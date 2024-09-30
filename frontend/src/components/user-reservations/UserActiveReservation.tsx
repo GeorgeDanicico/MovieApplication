@@ -6,6 +6,7 @@ import axios from '@/utils/axios';
 import { convertDate } from '@/utils/utils';
 import toast from 'react-hot-toast';
 import ConfirmationModal from '@/utils/ConfirmationModal';
+import { Button } from '@nextui-org/react';
 
 const UserActiveReservations = () => {
     const { userDetails, removeReservation } = useStore();
@@ -36,19 +37,19 @@ const UserActiveReservations = () => {
     }
 
     return (
-        <div className="flex flex-col py-8 px-4 gap-4 lg:gap-16 h-[300px] w-[500px] mb-10 rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
+        <div className="flex flex-col py-8 px-4 gap-4 lg:gap-16 h-max-[600px] w-[500px] mb-10 rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
             <span className='text-3xl font-bold uppercase'>Rezervarile <span className='text-slate-500'>active</span></span>
 
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col h-max-[400px] w-full overflow-scroll">
                 {userDetails?.activeReservations?.length === 0 && <span className='text-2xl'>Nu ai nicio rezervare activa</span>}
                 {userDetails?.activeReservations?.map((reservation: any) => (
-                    <div key={reservation.reservationId} className='grid grid-cols-2 gap-2 border-2 p-2 border-primary'>
+                    <div key={reservation.reservationId} className='grid grid-cols-2 gap-2 bg-lightGray p-2 rounded'>
                         <span>{convertDate(reservation.date, true)}</span>
                         <span>{reservation.sessionName}</span>
                         <span>{reservation.coachName}</span>
                         <span className='font-bold text-lg'>REZERVAT</span>
-                        <button className='col-span-2 text-white bg-primary font-semibold text-lg'
-                            onClick={() => openConfirmationModal(reservation.reservationId)}>Renunta</button>
+                        <Button className='col-span-2 text-white bg-primary font-semibold text-lg'
+                            onClick={() => openConfirmationModal(reservation.reservationId)}>Renunta</Button>
                     </div>
                 ))}
                 <ConfirmationModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onConfirm={() => handleCancelReservation()}/>

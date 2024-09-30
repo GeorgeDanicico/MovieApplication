@@ -51,9 +51,9 @@ public class UserController {
         return userService.getMemberships();
     }
 
-    @GetMapping("/sessions")
-    public List<AvailableSession> getAvailableSessions() {
-        return userService.getAvailableSessions();
+    @GetMapping("/sessions/{date}")
+    public List<AvailableSession> getAvailableSessions(@PathVariable String date) {
+        return userService.getAvailableSessions(date);
     }
 
     @GetMapping("/payments")
@@ -63,8 +63,8 @@ public class UserController {
         return userService.getPageOfPayments(email, page, size);
     }
 
-    @GetMapping("/sessions/{date}")
-    public Object getDailySessions(@PathVariable String date) {
-        return userService.getDailySessions(date);
-    }
+//    @GetMapping("/sessions/{date}")
+//    public Object getDailySessions(@PathVariable String date) {
+//        return userService.getDailySessions(date);
+//    }
 }

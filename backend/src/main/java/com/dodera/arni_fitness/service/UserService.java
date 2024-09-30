@@ -15,8 +15,10 @@ import com.dodera.arni_fitness.utils.ErrorType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -81,15 +83,15 @@ public class UserService {
         return subscriptionDetails;
     }
 
-    public List<AvailableSession> getAvailableSessions() {
-//        LocalDate localDate = LocalDate.parse(date);
-//        LocalDateTime startDate = localDate.atStartOfDay();
-//        LocalDateTime endDate = localDate.atTime(LocalTime.MAX);
+    public List<AvailableSession> getAvailableSessions(String date) {
+        LocalDate localDate = LocalDate.parse(date);
+        LocalDateTime startDate = localDate.atStartOfDay();
+        LocalDateTime endDate = localDate.atTime(LocalTime.MAX);
 
         return sessionRepository.findAll()
                 .stream()
-//                .filter(session -> session.getDatetime().isAfter(startDate)
-//                        && session.getDatetime().isBefore(endDate))
+                .filter(session -> session.getDatetime().isAfter(startDate)
+                        && session.getDatetime().isBefore(endDate))
                 .map(session -> new AvailableSession(
                         session.getId(),
                         session.getName(),
@@ -104,7 +106,7 @@ public class UserService {
         User user = userRepository.findByEmail(email).orElseThrow(()
                 -> new IllegalArgumentException(ErrorType.UNEXPECTED_ERROR));
 
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("datetime").descending());
 
         var purchasesPage = purchaseRepository.findAllByUserId(user.getId(), pageable);
 
