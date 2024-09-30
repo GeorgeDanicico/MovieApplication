@@ -58,10 +58,10 @@ const LoginForm = () => {
                 <span className='text-3xl'>Conectare</span>
 
                 <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-2 w-full text-left self-center'>
-                    <Input type="text" id="email" size="lg" label="Email" placeholder='exemplu@gmail.com' {...register('email')} />
+                    <Input type="text" id="email" size="lg" label="Email" disabled={isLoading} {...register('email')} />
                     {errors.email && <span className="text-red-700 text-xs mt-1">{errors.email.message}</span>}
 
-                    <Input className="mt-2" type="password" size="lg" id="password" label="Password" placeholder='************' {...register('password')}
+                    <Input className="mt-2" type="password" size="lg" id="password" label="Password" disabled={isLoading} {...register('password')}
                     />
                     {errors.password && <span className="text-red-700 text-xs mt-1">{errors.password.message}</span>}
 
@@ -71,7 +71,7 @@ const LoginForm = () => {
                         Login
                     </Button>
 
-                    <Button type="submit" isLoading={isLoading} radius="full"
+                    <Button type="submit" radius="full"
                         className='text-lg bg-gray-400 py-3 w-full h-2/3 text-white self-center mt-2 hover:cursor-pointer hover:bg-light'
                     >
                         <Image src='/google-icon.svg' width={20} height={20} alt='google-icon' />
@@ -92,7 +92,6 @@ const LoginForm = () => {
 
                 <div className="w-full h-[0.5px] bg-slate-600"></div>
             </div>
-            {isLoading && <LoadingScreen />}
         </div>
     )
 }
