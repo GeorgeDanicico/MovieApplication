@@ -28,21 +28,21 @@ const SignupForm = () => {
             <span className='text-3xl text-primary font-bold'>Creare cont</span>
 
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full gap-2 text-black text-base font-bold'>
-                <Input type="text" id="name" label="Nume" size="lg" placeholder='Introdu numele complet' {...register('name')} 
+                <Input type="text" id="name" label="Nume" size="lg" {...register('name')} 
                     className="my-1"/>
                 {errors.name && <span className="text-red-500 font-bold text-sm mt-0.5 pl-2">
                     {errors.name.message}</span>}
 
-                <Input type="text" id="email" label="Email" size="lg" placeholder='Introdu adresa ta de email' {...register('email')}
+                <Input type="text" id="email" label="Email" size="lg" {...register('email')}
                     className="my-1"/>
                 {errors.email && <span className="text-red-500 font-bold text-sm mt-0.5 pl-2">{errors.email.message}</span>}
 
-                <Input type="password" id="password" label="Parola" size="lg" placeholder='Introdu o parola sigura' {...register('password')}
+                <Input type="password" id="password" label="Parola" size="lg" {...register('password')}
                     className='my-1'
                 />
                 {errors.password && <span className="text-red-500 font-bold text-sm mt-0.5 pl-2">{errors.password.message}</span>}
 
-                <Input type="password" id="confirmPassword" label="Confirma parola" size="lg" placeholder='Introdu din nou parola' {...register('confirmPassword')}
+                <Input type="password" id="confirmPassword" label="Confirma parola" size="lg" {...register('confirmPassword')}
                     className='my-1'
                 />
                 {errors.confirmPassword && <span className="text-red-500 font-bold text-sm mt-0.5 pl-2">{errors.confirmPassword.message}</span>}
