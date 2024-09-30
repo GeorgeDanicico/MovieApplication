@@ -15,6 +15,7 @@ import com.dodera.arni_fitness.utils.ErrorType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -105,7 +106,7 @@ public class UserService {
         User user = userRepository.findByEmail(email).orElseThrow(()
                 -> new IllegalArgumentException(ErrorType.UNEXPECTED_ERROR));
 
-        Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = PageRequest.of(page, size, Sort.by("datetime").descending());
 
         var purchasesPage = purchaseRepository.findAllByUserId(user.getId(), pageable);
 

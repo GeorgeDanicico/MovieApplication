@@ -17,7 +17,7 @@ const CustomNavbar = () => {
     }
 
   return (
-    <Navbar className="bg-linear-gradient">
+    <Navbar className="bg-linear-gradient h-[75px]">
         <NavbarBrand>
             <p className="font-bold text-inherit">Fitty</p>
         </NavbarBrand>

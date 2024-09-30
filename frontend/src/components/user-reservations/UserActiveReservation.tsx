@@ -37,10 +37,10 @@ const UserActiveReservations = () => {
     }
 
     return (
-        <div className="flex flex-col py-8 px-4 gap-4 lg:gap-16 h-[300px] w-[500px] mb-10 rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
+        <div className="flex flex-col py-8 px-4 gap-4 lg:gap-16 h-max-[600px] w-[500px] mb-10 rounded-lg bg-white text-center text-primary shadow-spreaded shadow-primary">
             <span className='text-3xl font-bold uppercase'>Rezervarile <span className='text-slate-500'>active</span></span>
 
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col h-max-[400px] w-full overflow-scroll">
                 {userDetails?.activeReservations?.length === 0 && <span className='text-2xl'>Nu ai nicio rezervare activa</span>}
                 {userDetails?.activeReservations?.map((reservation: any) => (
                     <div key={reservation.reservationId} className='grid grid-cols-2 gap-2 bg-lightGray p-2 rounded'>

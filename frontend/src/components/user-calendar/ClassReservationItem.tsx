@@ -35,8 +35,8 @@ const ClassReservationItem = ({ sessionId, className, coach, time, availableSpac
     }
 
     return (
-        <div className='flex flex-col sm:flex-row gap-4 sm:gap-0 p-4 w-[500px] bg-lightGray rounded justify-between items-center'>
-            <div className="flex flex-col sm:flex-row gap-4 text-xl font-bold">
+        <div className='flex flex-col sm:flex-row gap-4 sm:gap-0 p-4 w-[500px] text-sm bg-lightGray rounded justify-between items-center'>
+            <div className="flex flex-col sm:flex-row gap-4  font-bold">
                 <span>{className}</span>
                 <span>Antrenor: {coach}</span>
                 <span>Ora: {getTimeFromDate(time)}</span>

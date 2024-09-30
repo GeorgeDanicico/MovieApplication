@@ -7,6 +7,7 @@ import UserPinCard from '../user-pin-card/UserPinCard';
 import UserCalendarCard from '../user-calendar/UserCalendarCard';
 import UserActiveReservations from '../user-reservations/UserActiveReservation';
 import UserActivePayments from '../user-payments/UserActivePayments';
+import UserReservationsHistory from '../user-reservations/UserHistoryReservations';
 
 const UserDashboardBody = () => {
 
@@ -19,8 +20,9 @@ const UserDashboardBody = () => {
             <UserPinCard />
             <UserMainDetailsCard />
             {hasUserActiveSubscription && <UserCalendarCard />}
-            <UserActiveReservations />
             <UserActivePayments />
+            <UserActiveReservations />
+            <UserReservationsHistory />
 
         </div>
     )
